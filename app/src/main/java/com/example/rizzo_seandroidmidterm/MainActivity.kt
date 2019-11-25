@@ -13,15 +13,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var result = ""
+
         fun query() {
-            val result = URL("https://cs-4263-252417.appspot.com").readText()
-            println(result)
+            result = URL("https://cs-4263-252417.appspot.com").readText()
         }
 
         button.setOnClickListener {
             GlobalScope.launch {
                 query()
             }
+            if (result != "") number.text = result
         }
     }
 }
